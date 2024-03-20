@@ -98,7 +98,7 @@ export const resetPasswordRequest = async (req, res) => {
     user.resetPasswordTokenTime = new Date().toISOString();
     const saveToken = await user.save();
     const resetPageLink =
-      "http://localhost:5173/reset-password?token=" + token + "&email=" + email;
+      "https://shopexnow.vercel.app/reset-password?token=" + token + "&email=" + email;
     const subject = "reset password for Shopex e-commerce";
     const html = `<p>Click <a href='${resetPageLink}'>here</a> to Reset Password. Valid only 10 minute.</p>`;
     if (email) {
