@@ -33,12 +33,12 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const publicPath = path.join(__dirname, "public");
 
 // Middleware to ignore SSL certificate errors (not recommended for production) (handling certificate error)
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 /* ************************** MIDDLEWARES ************************* */
 app.use(cors({
-    exposedHeaders: '*' ,
+    exposedHeaders: '*',
 }));
+
 app.use(express.static(publicPath));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -54,7 +54,6 @@ app.use(passport.authenticate('session'))
 const opts = {};
 opts.jwtFromRequest = tokenExtraction;
 opts.secretOrKey = process.env.JWT_SECRET_KEY; 
-
 
 /* ************************ PASSPORT STRATEGIES ******************** */
 

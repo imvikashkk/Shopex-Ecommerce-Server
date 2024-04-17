@@ -2,6 +2,7 @@ import passport from "passport";
 import nodemailer from "nodemailer";
 
 /* Sending Email */
+
 export const sendMail = async ({ to, subject, text, html }) => {
   const transport = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -15,7 +16,7 @@ export const sendMail = async ({ to, subject, text, html }) => {
   const info = await transport.sendMail({
     from: {
       name: "Shopex",
-      address: "imvikashkk@gmail.com",
+      address: "donotreply.shopexx@gmail.com",
     },
     to,
     subject,

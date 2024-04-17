@@ -96,7 +96,7 @@ export const resetPasswordRequest = async (req, res) => {
     const token = crypto.randomBytes(48).toString("hex");
     user.resetPasswordToken = token;
     user.resetPasswordTokenTime = new Date().toISOString();
-    const saveToken = await user.save();
+    await user.save();
     const resetPageLink =
       "https://shopexnow.vercel.app/reset-password?token=" + token + "&email=" + email;
     const subject = "reset password for Shopex e-commerce";
@@ -182,6 +182,7 @@ export const resetPassword = async (req, res) => {
       }
     );
   } catch (err) {
-    res.status(500).json({ message: err.message, error: "error" });
+    console.log(err);
+    res.status(500).json({ message: err.message, error: err });
   }
 };
